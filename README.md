@@ -45,6 +45,7 @@ Implementacja:
 - python
 
 Zadania:
+
 	[1]. odczyt rastrowego pliku graficznego - pewnei jpg albo bmp - uzyskanie struktury danych reprezentujacych pixele.
 	[2]. obliczenie parametrow wierzcholkow i trojkatow opisujacych bryle, reprezentujaca obraz. Utrozenie struktury xml pliku 3mf na podstawie wierzcholkow i trojkatow
 		[2.1] Mapowanie ze wspołrzędnych obrazu na współrzędne płaszczyzn XY (rozmiar 'voxela' w plaszczyznie XY)
@@ -57,6 +58,7 @@ Zadania:
 	[3]. zapis do pliku 3mf - utworzenie struktury katalogow, zpakowanie do zip, zmiana nazwy na 3mf
 
 TO DO:
+
 	[1]: {DONE}
 		Biblioteka PIL daje dostep do plikow graficznych na poziomie pixeli.
 		Obsluga wielu formatów, wbudowane funkcje manipulacji obrazem, etc
@@ -133,59 +135,61 @@ TO DO:
 
 # v1
  
- zalozmy ze istnieje obiekt reprezentujacy plik 3mf z pojedyncza przestrzenia
+Zalozmy ze istnieje obiekt reprezentujacy plik 3mf z pojedyncza przestrzenia
 chce moc do niego powiedziec: masz tutaj trojkat o konkretnych wspolrzednych, dodaj go do struktury
  - czy moge to robi niezaleznie jeden po drugim? i za kazdym razem odswierzac zawartosc pliku?
  - moze niech plik zawiera potencjalne wspolrzedne i je uaktywnia po kolei jak je podaje w dziedzinie [x,y,z]
-   no spoko ale one musza byc w konkretnej kolejnosci
-   to tak jakby powiedzeic zmapuj np (1000x1000x100) liczb na kolejne naturaln
-        ja ci bede podawal punkty formie [x,y,z] a ty mi powiedz jaki ma numer
-        zapamietaj sobie ze o niego pytalem
-        wtedy ja sobie spokojnie pracuje w [x,y,z] a ty mi dasz dla kazdego [x,y,z] juz ustalony numer,
-        - potem jak bede przechodzil przez wszystkie punkty...
 
-        jak ci dam punkt no to trzeba go wpisac do pliku na pewno, ale:
-            - jak podam ci go z numerem to jak go wcisnac pomiedzy sasiadow bez przeszukiwania calej listy
-              nie wiadomo jaki ma miec numer na liscie, chyba ze juz jest na liscie, a nie chce ci sie szukac
-               - nie no chwila przeciez jak bede mial zwykal liste o danej dlugosci to moge go poprostu wstawic
-                 tam gdzie ma byc
-            - nie mozesz go wpisac drugi raz, jesli juz jest na liscie
+	   no spoko ale one musza byc w konkretnej kolejnosci
+	   to tak jakby powiedzeic zmapuj np (1000x1000x100) liczb na kolejne naturalne
 
-        tak wlasciwie chcialbym ci dawac tez trojkaty, no a to to samo co dac ci punkty w konkretnej kolejnosci
+		ja ci bede podawal punkty formie [x,y,z] a ty mi powiedz jaki ma numer
+		zapamietaj sobie ze o niego pytalem
+		wtedy ja sobie spokojnie pracuje w [x,y,z] a ty mi dasz dla kazdego [x,y,z] juz ustalony numer,
+		- potem jak bede przechodzil przez wszystkie punkty...
+		jak ci dam punkt no to trzeba go wpisac do pliku na pewno, ale:
 
-        moglbym ci tez dac caly mesh troijkatow, no a to to samo co dac ci poprostu worek z trojkatami
+		    - jak podam ci go z numerem to jak go wcisnac pomiedzy sasiadow bez przeszukiwania calej listy
+		      nie wiadomo jaki ma miec numer na liscie, chyba ze juz jest na liscie, a nie chce ci sie szukac
+		       - nie no chwila przeciez jak bede mial zwykal liste o danej dlugosci to moge go poprostu wstawic
+			 tam gdzie ma byc
+		    - nie mozesz go wpisac drugi raz, jesli juz jest na liscie
 
-        te trojkaty trzeba najpierw jakos utworzyc
-        zeby ci ulatwic zadanie, obiecuje ze jak juz do ciebie zadzwonie
-        to podam ci je w nastepujacej formie
-            TriangleMesh, ktora w 'triangles' zawiera worek z trojkatami
-            trojkaty w 'vertices' zawieraja obiekty Vertex a te maja wspolrzedne
-                jak sobie zobacyzs na trojkat, to Vertexy sa w nim juz w odpowiedniej kolejnosci
-                to bardzo wazne, zeby ja zachowac.
-                brakuje im jednak globalnego numeru, dzieki ktoremu moglbys od razu wpisac je w odpowiednie miejsce
-                 na liscie i praktycznie miec wszystko gotowe
-                musialem przeciez wyobrazic sobie cala bryle w glowie w plaszczyznie [x,y,z] w formie trojkatow
-                 i zeby opisac te trojkaty musialem podac 3 wartosci [x,y,z] w odpowiedniej kolejnosci
+		tak wlasciwie chcialbym ci dawac tez trojkaty, no a to to samo co dac ci punkty w konkretnej kolejnosci
+		moglbym ci tez dac caly mesh troijkatow, no a to to samo co dac ci poprostu worek z trojkatami
+		te trojkaty trzeba najpierw jakos utworzyc
+		zeby ci ulatwic zadanie, obiecuje ze jak juz do ciebie zadzwonie
+		to podam ci je w nastepujacej formie
 
- WEJSCIE:
-    bitmapa, wejsciowy obraz
-    bitmape dosc latwo i szybko przerobie na liste wspolrzednych oraz liste trojkatow
-        wystarczy ze budujac proceduralnie bryle zachowam polaczenia miedzy obiektami
-        Vertex i Triangle
-            kazdy triangle ma dokladnie 3 vertexy w okreslonej kolejnosci)
-                triqangle  jest opisany wylacznei Vertexami i ich kolejnoscia w trojkacie
-            kazdy Vertex moze 'nalezec' do wielu trojkatow
-                Vertex jest opisany wspolrzednymi i swoja kolejnoscia w pliku
+		    TriangleMesh, ktora w 'triangles' zawiera worek z trojkatami
+		    trojkaty w 'vertices' zawieraja obiekty Vertex a te maja wspolrzedne
 
-                najpierw zdefiniuje potrzbne wierzcholki ze wspolrzednymi
-                potem zdefiniuje trojkaty na podstawie tych wierzcholkow
+			jak sobie zobacyzs na trojkat, to Vertexy sa w nim juz w odpowiedniej kolejnosci
+			to bardzo wazne, zeby ja zachowac.
+			brakuje im jednak globalnego numeru, dzieki ktoremu moglbys od razu wpisac je w odpowiednie miejsce
+			 na liscie i praktycznie miec wszystko gotowe
+			musialem przeciez wyobrazic sobie cala bryle w glowie w plaszczyznie [x,y,z] w formie trojkatow
+			 i zeby opisac te trojkaty musialem podac 3 wartosci [x,y,z] w odpowiedniej kolejnosci
 
+WEJSCIE:
+	bitmapa, wejsciowy obraz
 
-                samo zapisanie do pliku to poprostu przejscie przez wszystkie trojkaty
-                i wziecie z kazdego vertexow
-                 - jesli nie ma jeszcze numeru to nadaj mu kolejny i doodaj vertex do struktury xml
-                 - jesli juz ma to znaczy ze zostal wpisany, zignoruj
-                 - po przerobieniu 3 vertexow dodaj trojkat do stuktury xml, uzywajak numerow przypisanych wczesniej
-                   vertexom
- WYJSCIE:
-    plik 3mf
+	bitmape dosc latwo i szybko przerobie na liste wspolrzednych oraz liste trojkatow
+	wystarczy ze budujac proceduralnie bryle zachowam polaczenia miedzy obiektami
+	Vertex i Triangle
+	    kazdy triangle ma dokladnie 3 vertexy w okreslonej kolejnosci)
+		triqangle  jest opisany wylacznei Vertexami i ich kolejnoscia w trojkacie
+
+	    kazdy Vertex moze 'nalezec' do wielu trojkatow
+		Vertex jest opisany wspolrzednymi i swoja kolejnoscia w pliku
+		najpierw zdefiniuje potrzbne wierzcholki ze wspolrzednymi
+		potem zdefiniuje trojkaty na podstawie tych wierzcholkow
+		samo zapisanie do pliku to poprostu przejscie przez wszystkie trojkaty
+		i wziecie z kazdego vertexow
+		 - jesli nie ma jeszcze numeru to nadaj mu kolejny i doodaj vertex do struktury xml
+		 - jesli juz ma to znaczy ze zostal wpisany, zignoruj
+		 - po przerobieniu 3 vertexow dodaj trojkat do stuktury xml, uzywajak numerow przypisanych wczesniej
+		   vertexom
+	   
+WYJSCIE:
+	plik 3mf
