@@ -1,23 +1,26 @@
 # LightPicture
+---
 A python module for creating printable 3d models from raster images.
+
+
 
 # Repo Structure
 ---
-Core
+**Core**
 -
+- **LightPicture.py** - Root file. Classes that represent 3mf file and conversion process: Xml3mfWriter, TriangleMeshBuilder, ImageConverter
 - mesh.py - classes that represent 3d model structure: Vertex, Triangle, TriangleMesh 
-- LightPicture.py - classes that represent 3mf file and conversion process: Xml3mfWriter, TriangleMeshBuilder, ImageConverter
 - mymesh.3mf - output 3d file
-
 - LightPicture_Test.py - unittest script for LightPicture (very low coverage)
 
 
-Auxiliary
+**Auxiliary**
 -
 - ZIP (directory) - intermediate step artifact. This dir contains 3mf file internals.
 - sample_image(n).bmp - sample images to plug in and convert
 - _BACKUPS_v(x) - previous versions copies
 
+ 
  
 # Info 
 ---
@@ -45,8 +48,12 @@ Auxiliary
     
     
     
+    
+    
+    
+    
 ----------------------
-LEGACY: PRELIMINARY SCRAP NOTES
+# LEGACY: PRELIMINARY SCRAP NOTES
 ----------------------
    
 # 0
