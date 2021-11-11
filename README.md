@@ -1,16 +1,26 @@
 # LightPicture
 A python module for creating printable 3d models from raster images.
 
-# Structure
- 
- mesh.py - classes that represent 3d model structure.
- 
- LightPicture.py - classes that represent 3mf file and conversion process
- 
- LightPicture_Test.py - unittest script for LightPicture (very low coverage)
- 
+# Repo Structure
+---
+Core
+-
+- mesh.py - classes that represent 3d model structure: Vertex, Triangle, TriangleMesh 
+- LightPicture.py - classes that represent 3mf file and conversion process: Xml3mfWriter, TriangleMeshBuilder, ImageConverter
+- mymesh.3mf - output 3d file
+
+- LightPicture_Test.py - unittest script for LightPicture (very low coverage)
+
+
+Auxiliary
+-
+- ZIP (directory) - intermediate step artifact. This dir contains 3mf file internals.
+- sample_image(n).bmp - sample images to plug in and convert
+- _BACKUPS_v(x) - previous versions copies
+
  
 # Info 
+---
  Image to 3mf file
 
   The initial goal was to convert a bitmap into a 3D mesh in a fairly specific kind of way.
