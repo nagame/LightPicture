@@ -5,6 +5,17 @@ A python module for creating printable 3d models from raster images.
 ----------------------
 SUMMARY (running)
 ----------------------
+ 
+ # iteration
+ 
+ mesh.py - classes that represent 3d model structure.
+ 
+ LightPicture.py - classes that represent 3mf file and conversion process
+ 
+ LightPicture_Test.py - unittest script for LightPicture (very low coverage)
+ 
+ 
+ # iteration
  Image to 3mf file
 
   The initial goal was to convert a bitmap into a 3D mesh in a fairly specific kind of way.
