@@ -31,31 +31,42 @@ SUMMARY (running)
 (incomplete) Version History
 ----------------------  
 - v_4_5
+
     Added side walls generation
     Overall this is actually functional.
     Works tolerably for small files.
 
 - v_4_4
+
     Vertex scaling - z scale working
     !!! still needs to add side walls
     otherwise Pretty much working, seems usable in limited cases
 
 
 - v_4_3
+
     classes Vertex, Triangle and TriangleMesh moved to separate file named 'mesh.py'
     Implementing ImageConverter class
+    
 - v_4_2
+
     Tested TriangeMeshBuilder basic functionality, saving to 3mf file, timing
     * see test test_random_big_file for details of usage
+    
 - v_4_1
+
     Added TriangleMeshBuilder class
     Integrated TriangleMesh and 3mfFileWriter classes into the TriangleMeshBuilder
 
     !! see test_create_sample_file in unit test file
     !! for a quick reference and wirking example
+    
 - v_3_3
+
     Working on Triangle Mesh, added 3mffilewriter class
+  
 - v_3_2
+
     Merged Vertex and Coordinate classes together
     
     
@@ -63,7 +74,7 @@ SUMMARY (running)
 LEGACY: PRELIMINARY SCRAP NOTES
 ----------------------
    
-# v0
+# 0
 Konwersja obrazu do modelu 3D.
 Model 3D
 - reprezentuje obraz w postaci bryły
@@ -166,7 +177,7 @@ TO DO:
 					4. Popros kazdy voxel o wygenerowanie opisu trojkatow na podstawie dostarczonych globalnych numerow punktow
           
 
-# v1
+# 1
  
 Zalozmy ze istnieje obiekt reprezentujacy plik 3mf z pojedyncza przestrzenia
 chce moc do niego powiedziec: masz tutaj trojkat o konkretnych wspolrzednych, dodaj go do struktury
