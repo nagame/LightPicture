@@ -3,16 +3,19 @@ A python module for creating printable 3d models from raster images.
 
 
 ----------------------
-SUMMARY
+SUMMARY (running)
 ----------------------
  Image to 3mf file
 
-  The initial goal was to convert a bitmap into a 3D mesh in a fairly specific kind of way
+  The initial goal was to convert a bitmap into a 3D mesh in a fairly specific kind of way.
+  
   The resulting 3D mesh must
+  
       - be easy to import into prusa slicer
       - calculate in a reasonable time, considering the amount of potential 'points' in resulting space/mesh
       - easy to programatically customize it's behaviour...
-      so that it actually turns into a:
+      
+  so that it actually turns into a:
 
           *-=\_] !!! [_/=-* Programming framework for constructing abstract 3d meshes for printing *-=\_] !!! [_/=-*
           using python and basic concepts like
